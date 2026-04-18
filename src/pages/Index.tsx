@@ -48,12 +48,6 @@ const lectures = [
   },
 ];
 
-const pillars = [
-  { icon: "BookOpen", title: "Структурированный курс", text: "6 тематических блоков с постепенным углублением материала" },
-  { icon: "Users", title: "Практический фокус", text: "Реальные кейсы и разборы ситуаций из профессиональной жизни" },
-  { icon: "FileText", title: "Учебные материалы", text: "Конспекты, схемы и дополнительная литература к каждой теме" },
-];
-
 export default function Index() {
   const [page, setPage] = useState<Page>("home");
 
@@ -61,17 +55,17 @@ export default function Index() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => setPage("home")}
-            className="font-display text-xl font-semibold tracking-wide hover:text-accent transition-colors"
+            className="font-display text-lg font-medium hover:text-accent transition-colors"
           >
-            Профкоммуникация
+            Профессиональная коммуникация
           </button>
           <div className="flex items-center gap-8">
             <button
               onClick={() => setPage("home")}
-              className={`font-body text-sm tracking-wide transition-colors ${
+              className={`font-body text-sm transition-colors ${
                 page === "home"
                   ? "text-foreground font-medium border-b border-foreground pb-0.5"
                   : "text-muted-foreground hover:text-foreground"
@@ -81,7 +75,7 @@ export default function Index() {
             </button>
             <button
               onClick={() => setPage("lectures")}
-              className={`font-body text-sm tracking-wide transition-colors ${
+              className={`font-body text-sm transition-colors ${
                 page === "lectures"
                   ? "text-foreground font-medium border-b border-foreground pb-0.5"
                   : "text-muted-foreground hover:text-foreground"
@@ -93,98 +87,71 @@ export default function Index() {
         </div>
       </nav>
 
-      {/* HOME PAGE */}
+      {/* HOME PAGE — оформлена как вводная лекция */}
       {page === "home" && (
-        <main>
-          {/* Hero */}
-          <section className="max-w-5xl mx-auto px-6 pt-24 pb-20">
-            <div className="max-w-2xl animate-slide-up stagger-1">
-              <p className="font-body text-sm text-accent font-medium tracking-widest uppercase mb-6">
-                Учебный курс
-              </p>
-              <h1 className="font-display text-6xl md:text-7xl font-light leading-[1.1] mb-8 text-foreground">
-                Профессиональная
-                <br />
-                <em className="italic">коммуникация</em>
-              </h1>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10 max-w-lg">
-                Курс для тех, кто хочет говорить убедительно, писать чётко и выстраивать продуктивные отношения в профессиональной среде.
-              </p>
-              <button
-                onClick={() => setPage("lectures")}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground font-body text-sm font-medium px-7 py-3.5 hover:bg-primary/90 transition-colors"
-              >
-                Перейти к лекциям
-                <Icon name="ArrowRight" size={16} />
-              </button>
+        <main className="max-w-3xl mx-auto px-6 py-16">
+          {/* Шапка темы */}
+          <div className="mb-12 pb-8 border-b border-border">
+            <p className="font-body text-xs text-muted-foreground uppercase tracking-widest mb-3">Вводное занятие</p>
+            <h1 className="font-display text-5xl font-light leading-tight mb-5">
+              Профессиональная коммуникация
+            </h1>
+            <div className="flex items-center gap-5 text-muted-foreground">
+              <span className="font-body text-sm flex items-center gap-1.5">
+                <Icon name="Clock" size={13} /> 6 лекций
+              </span>
+              <span className="font-body text-sm flex items-center gap-1.5">
+                <Icon name="BookOpen" size={13} /> Учебный курс
+              </span>
             </div>
+          </div>
 
-            {/* Stats */}
-            <div className="mt-20 grid grid-cols-3 gap-px bg-border animate-fade-in stagger-3">
-              <div className="bg-background p-8 text-center">
-                <p className="font-display text-4xl font-light text-foreground mb-1">6</p>
-                <p className="font-body text-sm text-muted-foreground">лекций</p>
-              </div>
-              <div className="bg-background p-8 text-center">
-                <p className="font-display text-4xl font-light text-foreground mb-1">8+</p>
-                <p className="font-body text-sm text-muted-foreground">часов материала</p>
-              </div>
-              <div className="bg-background p-8 text-center">
-                <p className="font-display text-4xl font-light text-foreground mb-1">∞</p>
-                <p className="font-body text-sm text-muted-foreground">доступ к материалам</p>
-              </div>
+          {/* Введение */}
+          <section className="mb-12">
+            <h2 className="font-display text-2xl font-medium mb-4">О курсе</h2>
+            <div className="space-y-4 font-body text-base text-foreground leading-relaxed">
+              <p>
+                Коммуникация — это не просто обмен информацией. Это инструмент, который определяет, как нас воспринимают коллеги, партнёры и руководство. От того, как мы говорим, пишем и слушаем, зависит эффективность совместной работы и профессиональный рост.
+              </p>
+              <p>
+                Данный курс охватывает ключевые аспекты профессионального общения — от деловой переписки и публичных выступлений до межкультурного взаимодействия и навыков конструктивной обратной связи.
+              </p>
             </div>
           </section>
 
-          <div className="border-t border-border" />
-
-          {/* Pillars */}
-          <section className="max-w-5xl mx-auto px-6 py-20">
-            <h2 className="font-display text-4xl font-light mb-14">Что вы получите</h2>
-            <div className="grid md:grid-cols-3 gap-10">
-              {pillars.map((item, i) => (
-                <div key={i}>
-                  <div className="w-10 h-10 border border-border flex items-center justify-center mb-5">
-                    <Icon name={item.icon} size={18} className="text-accent" />
-                  </div>
-                  <h3 className="font-display text-xl font-medium mb-3">{item.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.text}</p>
-                </div>
+          {/* Цели курса */}
+          <section className="mb-12">
+            <h2 className="font-display text-2xl font-medium mb-4">Цели курса</h2>
+            <ul className="space-y-3">
+              {[
+                "Освоить базовые принципы эффективного профессионального общения",
+                "Научиться грамотно выстраивать деловую переписку и устную речь",
+                "Развить навыки публичных выступлений и презентаций",
+                "Изучить техники ведения переговоров и разрешения конфликтов",
+                "Понять культурные особенности международной коммуникации",
+              ].map((goal, i) => (
+                <li key={i} className="flex items-start gap-3 font-body text-base leading-relaxed">
+                  <span className="font-display text-accent text-lg leading-none mt-0.5">—</span>
+                  <span>{goal}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
-          <div className="border-t border-border" />
-
-          {/* Preview lectures */}
-          <section className="max-w-5xl mx-auto px-6 py-20">
-            <div className="flex items-end justify-between mb-2">
-              <h2 className="font-display text-4xl font-light">Программа курса</h2>
-              <button
-                onClick={() => setPage("lectures")}
-                className="font-body text-sm text-accent hover:underline flex items-center gap-1 mb-1"
-              >
-                Все лекции <Icon name="ChevronRight" size={14} />
-              </button>
-            </div>
-            <div>
-              {lectures.slice(0, 3).map((lecture, i) => (
+          {/* Структура курса */}
+          <section className="mb-12">
+            <h2 className="font-display text-2xl font-medium mb-6">Структура курса</h2>
+            <div className="space-y-0">
+              {lectures.map((lecture, i) => (
                 <div
                   key={i}
                   onClick={() => setPage("lectures")}
-                  className="lecture-card group flex items-start gap-6 py-6 border-t border-border hover:bg-secondary/40 px-3 -mx-3 transition-colors cursor-pointer"
+                  className="group flex items-start gap-5 py-4 border-t border-border hover:bg-secondary/30 -mx-3 px-3 transition-colors cursor-pointer"
                 >
-                  <span className="lecture-number font-display text-2xl text-muted-foreground/40 w-8 shrink-0 transition-colors">
-                    {lecture.number}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-4">
-                      <h4 className="font-display text-xl font-medium leading-tight">{lecture.title}</h4>
-                      <span className="font-body text-xs text-muted-foreground bg-muted px-2 py-1 whitespace-nowrap shrink-0">
-                        {lecture.topic}
-                      </span>
-                    </div>
-                    <p className="font-body text-sm text-muted-foreground mt-1.5 leading-relaxed">{lecture.description}</p>
+                  <span className="font-display text-lg text-muted-foreground/40 w-7 shrink-0">{lecture.number}</span>
+                  <div className="flex-1 min-w-0 flex items-baseline justify-between gap-4">
+                    <span className="font-body text-base">{lecture.title}</span>
+                    <span className="font-body text-xs text-muted-foreground whitespace-nowrap shrink-0">{lecture.duration}</span>
                   </div>
                 </div>
               ))}
@@ -192,31 +159,46 @@ export default function Index() {
             </div>
           </section>
 
-          {/* Footer */}
-          <footer className="border-t border-border">
-            <div className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
-              <p className="font-display text-lg font-medium">Профкоммуникация</p>
-              <p className="font-body text-xs text-muted-foreground">Образовательный курс · 2026</p>
+          {/* Методические рекомендации */}
+          <section className="mb-12">
+            <h2 className="font-display text-2xl font-medium mb-4">Методические рекомендации</h2>
+            <div className="space-y-4 font-body text-base text-foreground leading-relaxed">
+              <p>
+                Рекомендуется проходить лекции последовательно: каждая тема опирается на знания, полученные в предыдущих разделах. Для более глубокого освоения материала обращайтесь к дополнительной литературе, указанной в конце каждой лекции.
+              </p>
+              <p>
+                Особое внимание уделяйте практическим примерам — они отражают реальные ситуации из профессиональной среды и помогают закрепить теоретические знания.
+              </p>
             </div>
-          </footer>
+          </section>
+
+          {/* Переход к лекциям */}
+          <div className="border-t border-border pt-8">
+            <button
+              onClick={() => setPage("lectures")}
+              className="inline-flex items-center gap-2 font-body text-sm text-accent hover:underline"
+            >
+              Перейти к лекциям <Icon name="ArrowRight" size={14} />
+            </button>
+          </div>
         </main>
       )}
 
       {/* LECTURES PAGE */}
       {page === "lectures" && (
-        <main className="max-w-5xl mx-auto px-6 py-16">
-          <div className="mb-14">
-            <p className="font-body text-sm text-accent font-medium tracking-widest uppercase mb-4">Программа</p>
-            <h1 className="font-display text-5xl font-light leading-tight">Лекции курса</h1>
+        <main className="max-w-3xl mx-auto px-6 py-16">
+          <div className="mb-10 pb-8 border-b border-border">
+            <p className="font-body text-xs text-muted-foreground uppercase tracking-widest mb-3">Учебный курс</p>
+            <h1 className="font-display text-5xl font-light leading-tight">Лекции</h1>
           </div>
 
           <div>
             {lectures.map((lecture, i) => (
               <div
                 key={i}
-                className="lecture-card group flex items-start gap-6 py-8 border-t border-border hover:bg-secondary/40 px-3 -mx-3 transition-colors cursor-pointer"
+                className="lecture-card group flex items-start gap-6 py-8 border-t border-border hover:bg-secondary/30 px-3 -mx-3 transition-colors cursor-pointer"
               >
-                <span className="lecture-number font-display text-3xl text-muted-foreground/40 w-10 shrink-0 pt-0.5 transition-colors">
+                <span className="lecture-number font-display text-2xl text-muted-foreground/40 w-9 shrink-0 pt-0.5 transition-colors">
                   {lecture.number}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -226,36 +208,29 @@ export default function Index() {
                       {lecture.topic}
                     </span>
                   </div>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed mb-3">
                     {lecture.description}
                   </p>
-                  <div className="flex items-center gap-1.5 text-muted-foreground/60">
-                    <Icon name="Clock" size={13} />
-                    <span className="font-body text-xs">{lecture.duration}</span>
-                  </div>
+                  <span className="font-body text-xs text-muted-foreground/60 flex items-center gap-1.5">
+                    <Icon name="Clock" size={12} /> {lecture.duration}
+                  </span>
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity pt-2 shrink-0">
-                  <Icon name="ChevronRight" size={18} className="text-accent" />
+                  <Icon name="ChevronRight" size={16} className="text-accent" />
                 </div>
               </div>
             ))}
             <div className="border-t border-border" />
           </div>
-
-          {/* Info block */}
-          <div className="mt-16 bg-secondary/50 border border-border p-8 flex items-start gap-5">
-            <div className="w-8 h-8 bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-              <Icon name="Info" size={15} className="text-accent" />
-            </div>
-            <div>
-              <p className="font-display text-lg font-medium mb-1">Материалы к лекциям</p>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                К каждой лекции прилагаются конспекты, практические задания и список рекомендуемой литературы. Материалы доступны после просмотра соответствующей лекции.
-              </p>
-            </div>
-          </div>
         </main>
       )}
+
+      {/* Footer */}
+      <footer className="border-t border-border mt-8">
+        <div className="max-w-3xl mx-auto px-6 py-6">
+          <p className="font-body text-xs text-muted-foreground">Профессиональная коммуникация · Учебный курс · 2026</p>
+        </div>
+      </footer>
     </div>
   );
 }
